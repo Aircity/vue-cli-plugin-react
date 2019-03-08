@@ -1,11 +1,11 @@
 {
-  "name": "vue-cli-plugin-react",
-  "version": "1.0.0",
+  "name": "@o3o/vue-cli-plugin-react",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "aircity <aircity@drrr.us>",
+  "license": "MIT"
 }

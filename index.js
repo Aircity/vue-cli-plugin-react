@@ -1,21 +1,30 @@
 module.exports = (api, projectOptions) => {
-	api.chainWebpack(webpackConfig => {
-		webpackConfig
-			.entry('app')
-			.delete('./src/main.js')
-			.add('./src/index.js')
-			.end();
-	});
+  api.chainWebpack(webpackConfig => {
+    webpackConfig
+      .entry('app')
+      .delete('./src/main.js')
+      .add('./src/index.js')
+      .end()
 
-	api.registerCommand(
-		'vueconf', {
-			description: 'test',
-			usage: 'vue-cli-service vueconf',
-			options: {}
-		},
-		(args) => {
-			console.log('测试输出projectOptions(包含pluginOptions)');
-			console.log(projectOptions);
-		}
-	);
-};
+    webpackConfig.module
+      .rule('babel')
+      .test(/\.js?$/)
+      .use('babel-loader')
+      .loader('babel-loader')
+      .end()
+
+    webpackConfig.resolve.delete('vue-loader')
+  })
+
+  api.registerCommand(
+    'config',
+    {
+      description: 'test',
+      usage: 'vue-cli-service config',
+      options: {}
+    },
+    () => {
+      console.log(projectOptions)
+    }
+  )
+}

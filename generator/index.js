@@ -4,11 +4,11 @@ module.exports = (api, option, rootOptions) => {
 	// 扩展 package.json
 	api.extendPackage({
 		dependencies: {
-			"react": "^16.0.0",
-			"react-dom": "^16.0.0"
+			"react": "^16.8.4",
+			"react-dom": "^16.8.4"
 		},
 		devDependencies: {
-			"babel-preset-react-app": "^6.0.0"
+			"babel-preset-react-app": "^7.0.2"
 		},
 		eslintConfig: {
 			"extends": [
@@ -16,7 +16,7 @@ module.exports = (api, option, rootOptions) => {
 			]
 		},
 		scripts: {
-			"vueconf": "vue-cli-service vueconf"
+			"config": "vue-cli-service config"
 		},
 	});
 	// 渲染模板
