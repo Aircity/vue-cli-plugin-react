@@ -1,18 +1,21 @@
-const utils = require('../utils');
+const {
+	MergePresets,
+	GetVersion
+} = require('../utils');
 
 module.exports = (api, option, rootOptions) => {
 	// 扩展 package.json
 	api.extendPackage({
 		dependencies: {
-			"react": "^16.8.4",
-			"react-dom": "^16.8.4"
+			"react": GetVersion('react'),
+			"react-dom": GetVersion('react-dom')
 		},
 		devDependencies: {
 			"babel-preset-react-app": "^7.0.2"
 		},
 		eslintConfig: {
 			"extends": [
-				"plugin:react/recommended",
+				"plugin:react/recommended"
 			]
 		},
 		scripts: {
@@ -28,7 +31,7 @@ module.exports = (api, option, rootOptions) => {
 	api.postProcessFiles(files => {
 		const babelConfigRaw = files['babel.config.js'];
 		if (babelConfigRaw) {
-			files['babel.config.js'] = utils.MergePresets(babelConfigRaw, 'react-app');
+			files['babel.config.js'] = MergePresets(babelConfigRaw, 'react-app');
 		}
 	});
 };
