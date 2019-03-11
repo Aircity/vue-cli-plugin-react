@@ -3,7 +3,7 @@ const {
 	GetVersion
 } = require('../utils');
 
-module.exports = (api, option, rootOptions) => {
+module.exports = (api, option) => {
 	// 扩展 package.json
 	api.extendPackage({
 		dependencies: {
@@ -31,7 +31,7 @@ module.exports = (api, option, rootOptions) => {
 	api.postProcessFiles(files => {
 		const babelConfigRaw = files['babel.config.js'];
 		if (babelConfigRaw) {
-			files['babel.config.js'] = MergePresets(babelConfigRaw, 'react-app');
+			files['babel.config.js'] = MergePresets({}, 'react-app');
 		}
 	});
 };
